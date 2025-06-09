@@ -12,7 +12,6 @@ setup(
     license="GPL-3.0",
     keywords="pKa prediction GNN chemistry rdkit",
     packages=find_packages(exclude=["tests", "Datasets"]),
-    package_dir={"": "pka_predictor"},
     install_requires=[
         "torch>=2.0.0,<3.0",
         "torch_geometric>=2.3.0",
