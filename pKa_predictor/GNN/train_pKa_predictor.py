@@ -5,12 +5,13 @@ import numpy as np
 import pandas as pd
 import time
 from tqdm import tqdm
+import os
 
-from utils import load_data, calculate_metrics, average, optimizer_to
-from plot_and_print import plot_figure1, plot_figure2, plot_figure3, print_results, print_inference, print_results_test
-from prepare_set import generate_infersets, dump_datasets, generate_datasets
-from GNN import GNN, GNN_New
-from train import train, evaluate
+from .utils import load_data, calculate_metrics, average, optimizer_to
+from .plot_and_print import plot_figure1, plot_figure2, plot_figure3, print_results, print_inference, print_results_test
+from .prepare_set import generate_infersets, dump_datasets, generate_datasets
+from .GNN import GNN, GNN_New
+from .train import train, evaluate
 from torch_geometric.loader import DataLoader
 
 
@@ -40,7 +41,11 @@ def training(train_dataset, best_hypers, train_loader, test_loader, args):
     first_epoch = 1
     if args.restart != 'none':
         print('| Loading previously trained model...                                                                                        |')
-        checkpoint = torch.load(args.model_dir + args.restart)
+        # ------------------------------------- RECENT ADDITION --------------------------------------------
+        model_path = os.path.join(args.model_dir, args.model_name)
+        checkpoint = torch.load(model_path, map_location=torch.device('cpu'), weights_only=True)
+        #checkpoint = torch.load(args.model_dir + args.restart)
+        # --------------------------------------------------------------------------------------------------
         best_trained_model.load_state_dict(checkpoint['model_state_dict'])
         optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
         optimizer_to(optimizer, device)
@@ -473,7 +478,11 @@ def infer(i, small_mol, initial, ionized_smiles, ionization_states, infer_path, 
                           edge_dim=infer_dataset[0].edge_attr.shape[1],
                           model_params=model_params)
 
-    checkpoint = torch.load(args.model_dir + args.model_name, map_location=torch.device('cpu'), weights_only= True)
+    # ------------------------------------- RECENT ADDITION --------------------------------------------
+    model_path = os.path.join(args.model_dir, args.model_name)
+    checkpoint = torch.load(model_path, map_location=torch.device('cpu'), weights_only=True)
+    #checkpoint = torch.load(args.model_dir + args.model_name, map_location=torch.device('cpu'), weights_only= True)
+    # --------------------------------------------------------------------------------------------------
     model_infer.load_state_dict(checkpoint['model_state_dict'])
     model_infer.eval()
 
@@ -531,7 +540,11 @@ def testing_with_IC(args):
     test_loader = DataLoader(test_data, best_hypers["batch_size"],
                               num_workers=0, shuffle=False)
 
-    checkpoint = torch.load(args.model_dir + args.model_name, map_location=torch.device('cpu'))
+    # ------------------------------------- RECENT ADDITION --------------------------------------------
+    model_path = os.path.join(args.model_dir, args.model_name)
+    checkpoint = torch.load(model_path, map_location=torch.device('cpu'))
+    #checkpoint = torch.load(args.model_dir + args.model_name, map_location=torch.device('cpu'))
+    # --------------------------------------------------------------------------------------------------
     model_test.load_state_dict(checkpoint['model_state_dict'])
     model_test.eval()
 

@@ -23,13 +23,13 @@ import time
 
 from torch_geometric.loader import DataLoader
 
-from hyperoptimize import hyperoptimize
-from plot_and_print import print_model_txt
-from prepare_set import generate_datasets, dump_datasets
-from argParser import argsParser
-from utils import set_cuda_visible_device, load_data
-from train_pKa_predictor import training, testing, inferring, testing_with_IC
-from usage import usage
+from .hyperoptimize import hyperoptimize
+from .plot_and_print import print_model_txt
+from .prepare_set import generate_datasets, dump_datasets
+from .argParser import argsParser
+from .utils import set_cuda_visible_device, load_data
+from .train_pKa_predictor import training, testing, inferring, testing_with_IC
+from .usage import usage
 
 
 if __name__ == '__main__':

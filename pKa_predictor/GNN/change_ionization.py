@@ -9,7 +9,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from rdkit import Chem
 from rdkit.Chem import rdmolops
 
-from utils import whichElement
+from .utils import whichElement
 
 seed = 42
 torch.manual_seed(seed)

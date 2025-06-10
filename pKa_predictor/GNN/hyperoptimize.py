@@ -8,11 +8,11 @@ from tqdm import tqdm
 from hyperopt import fmin, tpe, hp, STATUS_OK, Trials
 from hyperopt.pyll import scope
 
-from utils import load_data, calculate_metrics, average, optimizer_to
-from plot_and_print import plot_figure1, plot_figure2, plot_figure3, print_results, print_inference, print_results_test
-from prepare_set import generate_infersets, dump_datasets
-from GNN import GNN
-from train import train, evaluate
+from .utils import load_data, calculate_metrics, average, optimizer_to
+from .plot_and_print import plot_figure1, plot_figure2, plot_figure3, print_results, print_inference, print_results_test
+from .prepare_set import generate_infersets, dump_datasets
+from .GNN import GNN
+from .train import train, evaluate
 from torch_geometric.loader import DataLoader
 
 

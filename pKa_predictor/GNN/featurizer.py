@@ -4,7 +4,7 @@ import numpy as np
 from rdkit import Chem
 from rdkit.Chem import rdmolops
 
-from utils import swap_bond_atoms
+from .utils import swap_bond_atoms
 
 electronegativity = {
     'C': 6.27,

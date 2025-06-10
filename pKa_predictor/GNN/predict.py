@@ -23,16 +23,16 @@ import copy
 import faulthandler
 
 #faulthandler.enable()
-from GNN import GNN
+from ..GNN import GNN
 from torch_geometric.loader import DataLoader
 from tqdm import tqdm
 #from hyperoptimize import hyperoptimize
-from plot_and_print import print_model_txt
-from prepare_set import generate_datasets, dump_datasets
-from argParser import argsParser
-from utils import set_cuda_visible_device, load_data, find_protonation_state
-from train_pKa_predictor import training, testing, inferring, testing_with_IC, infer
-from usage import usage
+from .plot_and_print import print_model_txt
+from .prepare_set import generate_datasets, dump_datasets
+from .argParser import argsParser
+from .utils import set_cuda_visible_device, load_data, find_protonation_state
+from .train_pKa_predictor import training, testing, inferring, testing_with_IC, infer
+from .usage import usage
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 
@@ -72,13 +72,25 @@ def predict(csv_file, device=None, data_path=r'../Datasets/', mode='pH', pH = 7.
     args.input = csv_file
     args.verbose = 0
 
+    #if isinstance(csv_file, str):
+    #    #I assume it's a csv file
+    #    infer_file = args.data_path + args.input
+    #    data = pd.read_csv(infer_file, sep=',')
+    #elif isinstance(csv_file, pd.DataFrame):
+    #    data = csv_file
+
+    # ------------------------------------- RECENT ADDITION --------------------------------------------
+    # TO ALLOW FOR MORE ACCESSIBLE DATAFRAME INPUT
     if isinstance(csv_file, str):
-        #I assume it's a csv file
-        infer_file = args.data_path + args.input
+        # Use absolute path if provided, else join with data_path
+        if os.path.isabs(csv_file):
+            infer_file = csv_file
+        else:
+            infer_file = os.path.join(data_path, csv_file)
         data = pd.read_csv(infer_file, sep=',')
     elif isinstance(csv_file, pd.DataFrame):
         data = csv_file
-
+    # --------------------------------------------------------------------------------------------------
 
     infer_path = args.infer_pickled
 

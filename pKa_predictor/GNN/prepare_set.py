@@ -3,15 +3,16 @@ import numpy as np
 import pandas as pd
 import pickle
 import copy
+import os
 
 from rdkit import Chem
 from tqdm import tqdm
 from torch_geometric.data import Data
 
-from featurizer import from_acid_to_base, get_node_features, get_edge_features, get_distance_matrix, \
+from .featurizer import from_acid_to_base, get_node_features, get_edge_features, get_distance_matrix, \
     get_mol_charge, get_center_charge, get_edge_info, get_labels
-from utils import isDigit, swap_tensor_items, swap_tensor_values, swap_tensor_columns
-from change_ionization import addHs, ionizeN, parse_smiles, find_centers
+from .utils import isDigit, swap_tensor_items, swap_tensor_values, swap_tensor_columns
+from .change_ionization import addHs, ionizeN, parse_smiles, find_centers
 
 
 def generate_datasets(filename, train_or_test, args):
@@ -591,6 +592,9 @@ def generate_infersets(small_mol, i, initial, ionized_smiles, ionization_states,
 
 
 def dump_datasets(dataset, path):
+    # ------------------------------------- RECENT ADDITION --------------------------------------------
+    os.makedirs(os.path.dirname(path), exist_ok=True)  # Ensure directory exists
+    # --------------------------------------------------------------------------------------------------
     dataset_dumps = pickle.dumps(dataset)
     with open(path, "wb") as file:
         file.write(dataset_dumps)

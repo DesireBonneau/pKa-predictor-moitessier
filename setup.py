@@ -20,11 +20,13 @@ setup(
         "seaborn>=0.12",
         "hyperopt>=0.2.7",
         # note: rdkit should be installed via conda-forge prior to pip install
+        "rdkit-pypi>=2023.3",
+        "scikit-learn>=1.2.0,<2.0",
     ],
     entry_points={
         "console_scripts": [
-            "pka-predict = pka_predictor.main:main",
-        ],
+            "pka-predictor=pka_predictor.main:main"
+        ]
     },
     classifiers=[
         "Programming Language :: Python :: 3",

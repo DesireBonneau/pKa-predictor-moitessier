@@ -12,7 +12,7 @@
 import pandas as pd
 import time
 
-from argParser import argsParser
+from .argParser import argsParser
 
 
 if __name__ == '__main__':
