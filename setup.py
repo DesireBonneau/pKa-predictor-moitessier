@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="pka_predictor",
+    name="pka_predictor_moitessier",
     version="0.1.0",
     author="Moitessier Lab",
     author_email="nicolas.moitessier@mcgill.ca",
