@@ -4,12 +4,6 @@ setup.py
 pka_predictor/__init__.py
 pka_predictor/main.py
 pka_predictor/predict.py
-pka_predictor.egg-info/PKG-INFO
-pka_predictor.egg-info/SOURCES.txt
-pka_predictor.egg-info/dependency_links.txt
-pka_predictor.egg-info/entry_points.txt
-pka_predictor.egg-info/requires.txt
-pka_predictor.egg-info/top_level.txt
 pka_predictor/Baseline_Models/__init__.py
 pka_predictor/GNN/GNN.py
 pka_predictor/GNN/__init__.py
@@ -40,3 +34,9 @@ pka_predictor/MolGpKa_retrained/utils/gcn_conv.py
 pka_predictor/MolGpKa_retrained/utils/inits.py
 pka_predictor/MolGpKa_retrained/utils/ionization_group.py
 pka_predictor/MolGpKa_retrained/utils/net.py
+pka_predictor_moitessier.egg-info/PKG-INFO
+pka_predictor_moitessier.egg-info/SOURCES.txt
+pka_predictor_moitessier.egg-info/dependency_links.txt
+pka_predictor_moitessier.egg-info/entry_points.txt
+pka_predictor_moitessier.egg-info/requires.txt
+pka_predictor_moitessier.egg-info/top_level.txt

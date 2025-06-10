@@ -20,7 +20,7 @@ setup(
         "seaborn>=0.12",
         "hyperopt>=0.2.7",
         # note: rdkit should be installed via conda-forge prior to pip install
-        "rdkit-pypi>=2023.3",
+        # "rdkit-pypi>=2025.3",
         "scikit-learn>=1.2.0,<2.0",
     ],
     entry_points={
