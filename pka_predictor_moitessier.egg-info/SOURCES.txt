@@ -1,5 +1,6 @@
 LICENSE
 README.md
+pyproject.toml
 setup.py
 pka_predictor/__init__.py
 pka_predictor/main.py

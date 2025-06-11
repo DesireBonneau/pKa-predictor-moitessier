@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: pka_predictor_moitessier
-Version: 0.1.0
+Version: 0.1.5
 Summary: Graph-based pKa prediction for small molecules
 Home-page: https://github.com/MoitessierLab/pKa-predictor
 Author: Moitessier Lab
@@ -13,13 +13,10 @@ Classifier: Operating System :: OS Independent
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: torch<3.0,>=2.0.0
-Requires-Dist: torch_geometric>=2.3.0
-Requires-Dist: pandas<2.0,>=1.5
-Requires-Dist: numpy<2.0,>=1.24
+Requires-Dist: numpy>=1.24
 Requires-Dist: seaborn>=0.12
 Requires-Dist: hyperopt>=0.2.7
-Requires-Dist: scikit-learn<2.0,>=1.2.0
+Requires-Dist: scikit-learn>=1.2.0
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier

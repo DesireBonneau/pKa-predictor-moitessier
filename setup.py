@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pka_predictor_moitessier",
-    version="0.1.0",
+    version="0.1.5",
     author="Moitessier Lab",
     author_email="nicolas.moitessier@mcgill.ca",
     description="Graph-based pKa prediction for small molecules",
@@ -13,15 +13,15 @@ setup(
     keywords="pKa prediction GNN chemistry rdkit",
     packages=find_packages(exclude=["tests", "Datasets"]),
     install_requires=[
-        "torch>=2.0.0,<3.0",
-        "torch_geometric>=2.3.0",
-        "pandas>=1.5,<2.0",
-        "numpy>=1.24,<2.0",
+        #"torch>=2.0.0,<3.0",   # PyG users should install torch separately
+        #"torch_geometric>=2.3.0",
+        #"pandas>=1.5,<2.0",
+        "numpy>=1.24",
         "seaborn>=0.12",
         "hyperopt>=0.2.7",
         # note: rdkit should be installed via conda-forge prior to pip install
-        # "rdkit-pypi>=2025.3",
-        "scikit-learn>=1.2.0,<2.0",
+        #"rdkit-pypi>=2025.3",
+        "scikit-learn>=1.2.0",
     ],
     entry_points={
         "console_scripts": [
